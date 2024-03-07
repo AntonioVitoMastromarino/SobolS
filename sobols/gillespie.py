@@ -121,16 +121,16 @@ def stochastic(net, Xparam, days, citizens):
 
 def gen_net(args):
 	assert args == []
-	topology = choice([nxs, nxl])
+	topology = choice(zip([nxs, nxl], ['nxs', 'nxl']))
 	citizens = choice([2**k for k in range(8,16)])
 	d = 3
 	p = rand()
-	net = list(topology(citizens, d, p).edges())
-	return {'topology': topology, 'citizens': citizens, 'd': d, 'p': p, 'net': net, 'init': init(citizens, net)}
+	net = list(topology[0](citizens, d, p).edges())
+	return {'topology': topology[1], 'citizens': citizens, 'd': d, 'p': p, 'net': net, 'init': init(citizens, net)}
 
-def save_net(): pass
+def save_net(arg, path): pass
 	
-def load_net(): pass
+def load_net(path): pass
 
 def gen_par(args):
 	pars = {par: interval[par][0] + rand() * (interval[par][1] - interval[par][0]) for par in reaction}
@@ -138,9 +138,9 @@ def gen_par(args):
 	pars['betaI'] /= args[0]['d']
 	return pars
 
-def save_par(): pass
+def save_par(arg, path): pass
 
-def load_par(): pass
+def load_par(path): pass
 
 def gen_sim(args):
 	net = args[0]['net']
@@ -149,9 +149,9 @@ def gen_sim(args):
 	param = args[1]
 	return stochastic(net, param, days, citizens)
 
-def save_sim(): pass
+def save_sim(arg, path): pass
 
-def load_sim(): pass
+def load_sim(path): pass
 
 def QoI(args):
 	traj = args[- 1]
