@@ -10,4 +10,4 @@ The motivating example is a SAIRS model on random network composed by three step
   a simple sampler for epistemic parameters that specifies the distribution we are using for these;
   a random network generator like... ;
   a specialized Gillespie... ;
-The main program shall support be parallel computing (multiprocessing + OS), consider using Snakemake for this in developing.
+The main program shall support be parallel computing at a certain point.
